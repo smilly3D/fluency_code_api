@@ -1,46 +1,44 @@
-import {Entity, PrimaryColumn, Column, CreateDateColumn} from "typeorm";
-import { v4 as uuid } from 'uuid'
+import { Entity, PrimaryColumn, Column, CreateDateColumn } from "typeorm";
+import { v4 as uuid } from "uuid";
 
-@Entity('students')
+@Entity("students")
 export class Students {
+  @PrimaryColumn()
+  id: string;
 
-    @PrimaryColumn()
-    id: string;
+  @Column()
+  name: string;
 
-    @Column()
-    name: string;
+  @Column()
+  email: string;
 
-    @Column()
-    email: string;
+  @Column()
+  password: string;
 
-    @Column()
-    password : string;
-    
-    @Column()
-    cpf: string;
+  @Column()
+  cpf: string;
 
-    @Column()
-    phone: string;
+  @Column()
+  phone: string;
 
-    @Column()
-    biography: string;
+  @Column()
+  biography: string;
 
-    @Column()
-    photo_url: string;
+  @Column()
+  photo_url: string;
 
-    @Column()
-    description: string;
+  @Column()
+  description: string;
 
-    @CreateDateColumn()
-    createdOn : Date;
+  @CreateDateColumn()
+  createdOn: Date;
 
-    @CreateDateColumn()
-    updatedOn : Date;
+  @CreateDateColumn()
+  updatedOn: Date;
 
-    constructor(){
-        if(!this.id){
-            this.id = uuid();
-        }
+  constructor() {
+    if (!this.id) {
+      this.id = uuid();
     }
-
+  }
 }

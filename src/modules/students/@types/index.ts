@@ -1,6 +1,5 @@
-
-export interface ICreateStudents{
-    name: string;
-    email: string;
-    password: string;
+export interface ICreateStudents {
+  name: string;
+  email: string;
+  password: string;
 }

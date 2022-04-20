@@ -1,23 +1,29 @@
+import bcrypt from "bcrypt";
 import { inject, injectable } from "tsyringe";
-import { IStudentsRepositories } from "../../repositories/IStudentsRepositories";
-import { createStudentsDTO } from "./createStudentsDTO";
-import bcrypt from 'bcrypt';
 
+import { IStudentsRepositories } from "../../repositories/IStudentsRepositories";
+import { ICreateStudentsDTO } from "./createStudentsDTO";
 
 @injectable()
 export class CreateStudentsUseCase {
+  constructor(
+    @inject("StudentsRepositories")
+    private studentsRepositories: IStudentsRepositories
+  ) {}
 
-    constructor(
-        @inject("StudentsRepositories")
-        private studentsRepositories: IStudentsRepositories
-    ){}
+  async execute({
+    name,
+    email,
+    password,
+  }: ICreateStudentsDTO): Promise<string | Error> {
+    const passwords = await bcrypt.hash(password, 10);
 
-    async execute({name, email, password} : createStudentsDTO) : Promise<any> {
+    const student = await this.studentsRepositories.create({
+      name,
+      email,
+      password: passwords,
+    });
 
-        password = await bcrypt.hash(password, 10)
-        
-        const student = await this.studentsRepositories.create({name, email, password})
-
-        return student
-    }
+    return student;
+  }
 }
