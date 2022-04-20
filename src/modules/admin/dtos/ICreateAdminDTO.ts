@@ -6,8 +6,6 @@ interface ICreateAdminrDTO {
   phone: string;
   biography: string;
   photo_url: string;
-  github: string;
-  hour: string;
   description: string;
 }
 
