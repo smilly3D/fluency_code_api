@@ -1,6 +1,7 @@
 import { hash } from "bcrypt";
 import { inject, injectable } from "tsyringe";
 
+import { AppError } from "../../../../errors/AppError";
 import { ICreateTeacherDTO } from "../../dtos/ICreateTeacherDTO";
 import { ITeacherRepository } from "../../repositories/ITeachRepository";
 
@@ -27,7 +28,12 @@ class CreateTeacherUseCase {
     );
 
     if (teacherAlreadyExists) {
-      throw new Error("Teacher already exists");
+      throw new AppError("User already exists");
+    }
+    const cpfAlreadyExists = await this.teacherRepository.findByCPF(cpf);
+
+    if (cpfAlreadyExists) {
+      throw new AppError("CPF already exists");
     }
 
     const passwordHash = await hash(password, 8);
