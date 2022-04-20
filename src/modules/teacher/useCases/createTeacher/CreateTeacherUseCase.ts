@@ -28,7 +28,7 @@ class CreateTeacherUseCase {
     );
 
     if (teacherAlreadyExists) {
-      throw new AppError("User already exists");
+      throw new AppError("User already exists", 409);
     }
     const cpfAlreadyExists = await this.teacherRepository.findByCPF(cpf);
 
