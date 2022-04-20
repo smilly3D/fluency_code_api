@@ -1,6 +1,9 @@
-import 'reflect-metadata'
-import { app } from "./app";
+import "reflect-metadata";
 
-import './shared/container'
+import "express-async-errors";
+
+import "./shared/container";
+
+import { app } from "./app";
 
 app.listen(3333, () => console.log("Server is running"));
