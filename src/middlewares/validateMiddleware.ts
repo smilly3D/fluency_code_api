@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 
-export const validateMiddlewere =
+export const validateMiddleware =
   (schema: any) =>
   async (request: Request, response: Response, next: NextFunction) => {
     const resource = request.body;
