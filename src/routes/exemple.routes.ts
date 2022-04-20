@@ -1,11 +1,11 @@
-import { Router, Request, Response } from "express";
+import { Router } from "express";
 
-const exampleRoutes = Router();
+import { CreateTeacherController } from "../modules/teacher/useCases/createTeacher/CreateUserController";
 
-exampleRoutes.get("/", (request: Request, response: Response) => {
-  const helo = "Helo world";
+const teachersRoutes = Router();
 
-  return response.status(200).send(helo);
-});
+const createTeacherControler = new CreateTeacherController();
 
-export { exampleRoutes };
+teachersRoutes.post("/", createTeacherControler.handle);
+
+export { teachersRoutes };
