@@ -6,7 +6,7 @@ interface IOptions {
 
 getConnectionOptions().then((options) => {
   const newOptions = options as IOptions;
-  newOptions.host = "database";
+  newOptions.host = "ec2-3-218-171-44.compute-1.amazonaws.com";
   createConnection({
     ...options,
   });
