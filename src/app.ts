@@ -14,5 +14,4 @@ app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerFile));
 
 app.use(router);
 
-
-export { app }
+export { app };
