@@ -7,9 +7,9 @@ class LoginTeacherController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { email, password } = request.body;
 
-    const createTeacherUseCase = container.resolve(LoginTeacherUseCase);
+    const loginTeacherUseCase = container.resolve(LoginTeacherUseCase);
 
-    const token = await createTeacherUseCase.execute({ email, password });
+    const token = await loginTeacherUseCase.execute({ email, password });
 
     return response.status(201).json({ token });
   }
