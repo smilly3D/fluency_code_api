@@ -6,6 +6,7 @@ interface IAdminRepository {
   findByEmail(email: string): Promise<Admin>;
   findById(id: string): Promise<Admin>;
   findByCPF(cpf: string): Promise<Admin>;
+  list(): Promise<Admin[]>;
 }
 
 export { IAdminRepository };
