@@ -1,11 +1,14 @@
 import { Router } from "express";
 
 import { CreateAdminController } from "../modules/admin/useCases/createAdmin/CreateAdminController";
+import { GetAdminController } from "../modules/admin/useCases/getAdmin/GetAdminController";
 
 const adminRoutes = Router();
 
-const createTeacherControler = new CreateAdminController();
+const createAdminControler = new CreateAdminController();
+const getAdminController = new GetAdminController();
 
-adminRoutes.post("/", createTeacherControler.handle);
+adminRoutes.post("/", createAdminControler.handle);
+adminRoutes.get("/", getAdminController.handle);
 
 export { adminRoutes };

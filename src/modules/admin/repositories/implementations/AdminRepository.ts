@@ -45,6 +45,10 @@ class AdminRepository implements IAdminRepository {
     const admin = await this.repository.findOne({ cpf });
     return admin;
   }
+
+  async list(): Promise<Admin[]> {
+    return this.repository.find();
+  }
 }
 
 export { AdminRepository };
