@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { inject, injectable } from "tsyringe";
 
-import { CONFIG } from "../../../../configs";
+import { JWT_CONFIG } from "../../../../configs";
 import { AppError } from "../../../../errors/AppError";
 import { ILoginAdminDTO } from "../../dtos/ILoginAdminDTO";
 import { IAdminRepository } from "../../repositories/IAdminRepository";
@@ -26,8 +26,8 @@ class LoginAdminUseCase {
       throw new AppError("Invalid Password");
     }
     const { id } = admin;
-    const accessToken = jwt.sign({ id }, CONFIG.secretKey, {
-      expiresIn: CONFIG.expiresIn,
+    const accessToken = jwt.sign({ id }, JWT_CONFIG.SECRET_KEY, {
+      expiresIn: JWT_CONFIG.EXPIRES_IN,
     });
 
     return accessToken;
