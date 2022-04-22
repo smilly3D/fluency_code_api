@@ -11,10 +11,8 @@ const createAdminControler = new CreateAdminController();
 const getAdminController = new GetAdminController();
 const loginAdminController = new LoginAdminController();
 
-adminRoutes.post("/admin", loginAdminController.handle);
-adminRoutes.post("/", createAdminControler.handle);
 adminRoutes.get("/", getAdminController.handle);
-
-
+adminRoutes.post("/", createAdminControler.handle);
+adminRoutes.post("/login", loginAdminController.handle);
 
 export { adminRoutes };
