@@ -6,6 +6,8 @@ import { StudentsRepositories } from "../../modules/students/repositories/implem
 import { IStudentsRepositories } from "../../modules/students/repositories/IStudentsRepositories";
 import { TeacherRepository } from "../../modules/teacher/repositories/implementations/TeacherRepository";
 import { ITeacherRepository } from "../../modules/teacher/repositories/ITeachRepository";
+import { S3Provider } from "../providers/S3Storage/implementions/S3Provider";
+import { IS3Provider } from "../providers/S3Storage/IS3Provider";
 
 container.registerSingleton<IAdminRepository>(
   "AdminRepository",
@@ -21,3 +23,5 @@ container.registerSingleton<ITeacherRepository>(
   "TeacherRepository",
   TeacherRepository
 );
+
+container.registerSingleton<IS3Provider>("S3Provider", S3Provider);
