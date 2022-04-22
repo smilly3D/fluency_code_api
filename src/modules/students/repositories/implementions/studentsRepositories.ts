@@ -20,4 +20,23 @@ export class StudentsRepositories implements IStudentsRepositories {
 
     return "User created successfully";
   }
+
+  async findById(user_id: string): Promise<Students> {
+    const repo = getRepository(Students);
+
+    const student = await repo.findOne({ id: user_id });
+
+    return student;
+  }
+
+  async updatePhoto(user_id: string, photo: string): Promise<void> {
+    const repo = getRepository(Students);
+
+    const user = await repo.findOne({ id: user_id });
+
+    user.photo_url = photo;
+    user.updatedOn = new Date();
+
+    await repo.save(user);
+  }
 }
