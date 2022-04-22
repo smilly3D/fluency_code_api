@@ -1,11 +1,16 @@
-import { DB_URI } from "./src/configs";
+import dotenv from "dotenv";
+import { ConnectionOptions } from "typeorm";
 
-export default {
+dotenv.config();
+
+const devConfig = {
   type: "postgres",
-  url: DB_URI,
+  url: process.env.DB_URI,
   migrations: ["./src/database/migrations/*.ts"],
   entities: ["./src/modules/**/entities/*.ts"],
   cli: {
     migrationsDir: "./src/database/migrations",
   },
-};
+} as ConnectionOptions;
+
+export default devConfig;
