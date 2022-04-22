@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { inject, injectable } from "tsyringe";
 
-import { CONFIG } from "../../../../configs";
+import { JWT_CONFIG } from "../../../../configs";
 import { AppError } from "../../../../errors/AppError";
 import { ILoginTeacherDTO } from "../../dtos/ILoginTeacherDTO";
 import { ITeacherRepository } from "../../repositories/ITeachRepository";
@@ -29,8 +29,8 @@ class LoginTeacherUseCase {
       throw new AppError("Invalid Password");
     }
     const { id } = teacher;
-    const accessToken = jwt.sign({ id }, CONFIG.secretKey, {
-      expiresIn: CONFIG.expiresIn,
+    const accessToken = jwt.sign({ id }, JWT_CONFIG.SECRET_KEY, {
+      expiresIn: JWT_CONFIG.EXPIRES_IN,
     });
 
     return accessToken;
