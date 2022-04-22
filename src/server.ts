@@ -7,4 +7,4 @@ import "./shared/container";
 import { app } from "./app";
 import { PORT } from "./configs";
 
-app.listen(PORT || 3333, () => console.log("Server is running"));
+app.listen(PORT, () => console.log("Server is running"));
