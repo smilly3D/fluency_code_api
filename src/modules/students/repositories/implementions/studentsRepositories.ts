@@ -45,15 +45,4 @@ export class StudentsRepositories implements IStudentsRepositories {
   async list(): Promise<Students[]> {
     return this.repository.find();
   }
-
-  async updatePhoto(user_id: string, photo: string): Promise<void> {
-    const repo = getRepository(Students);
-
-    const user = await repo.findOne({ id: user_id });
-
-    user.photo_url = photo;
-    user.updatedOn = new Date();
-
-    await repo.save(user);
-  }
 }
