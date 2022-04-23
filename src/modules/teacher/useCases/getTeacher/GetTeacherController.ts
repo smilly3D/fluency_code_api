@@ -3,7 +3,7 @@ import { container } from "tsyringe";
 
 import { GetTeacherUseCase } from "./GetTeacherUseCase";
 
-class GetAdminController {
+class GetTeacherController {
   async handle(request: Request, response: Response): Promise<Response> {
     const getTeacherUseCase = container.resolve(GetTeacherUseCase);
     const all = await getTeacherUseCase.execute();
@@ -12,4 +12,4 @@ class GetAdminController {
   }
 }
 
-export { GetAdminController };
+export { GetTeacherController };
