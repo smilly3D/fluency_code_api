@@ -12,7 +12,7 @@ class GetAdminUseCase {
 
   execute(): Promise<Admin[]> {
     const admin = this.adminRepository.list();
-    console.log(admin);
+
     return admin;
   }
 }
