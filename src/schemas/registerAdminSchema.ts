@@ -1,12 +1,12 @@
 import * as yup from "yup";
 
 export const registerAdminSchema = yup.object().shape({
-  name: yup.string().required("Campo de name obrigátorio"),
-  email: yup.string().required("Campo de email obrigátorio"),
-  password: yup.string().required("Campo de senha obrigátorio"),
-  cpf: yup.string().required("Campo de cpf obrigátorio"),
-  phone: yup.string().required("Campo de phone obrigátorio"),
-  biography: yup.string().required("Campo de biography obrigátorio"),
-  description: yup.string().required("Campo de description obrigátorio"),
+  name: yup.string().required("The name field is mandatory"),
+  email: yup.string().required("The email field is mandatory"),
+  password: yup.string().required("The password field is mandatory"),
+  cpf: yup.string().required("The name cpf is mandatory"),
+  phone: yup.string().required("The phone field is mandatory"),
+  biography: yup.string(),
+  description: yup.string(),
   photo_url: yup.string(),
 });
