@@ -5,6 +5,7 @@ import multerConfig from "../configs/multer/multerConfig";
 import { validateMiddleware } from "../middlewares/validateMiddleware";
 import { CreateStudentsController } from "../modules/students/useCases/createStudents/createStudentsController";
 import { GetStudentController } from "../modules/students/useCases/getStudent/getStudentController";
+import { LoginStudentController } from "../modules/students/useCases/loginStudents/loginStudentsController";
 import { UpdatePhotoStudentsController } from "../modules/students/useCases/updatePhotoStudents/updatePhotoStudentsController";
 import { registerSchema } from "../schemas/registerSchema";
 
@@ -19,6 +20,8 @@ studentsRouter.post(
   validateMiddleware(registerSchema),
   new CreateStudentsController().handle
 );
+
+studentsRouter.post("/login", new LoginStudentController().login);
 
 studentsRouter.get("/", getStudentController.handle);
 
