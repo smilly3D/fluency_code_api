@@ -5,6 +5,7 @@ import multerConfig from "../configs/multer/multerConfig";
 import { validateMiddleware } from "../middlewares/validateMiddleware";
 import { CreateStudentsController } from "../modules/students/useCases/createStudents/createStudentsController";
 import { GetStudentController } from "../modules/students/useCases/getStudent/getStudentController";
+import { GetStudentByIdController } from "../modules/students/useCases/getStudentById/getStudentByIdController";
 import { LoginStudentController } from "../modules/students/useCases/loginStudents/loginStudentsController";
 import { UpdatePhotoStudentsController } from "../modules/students/useCases/updatePhotoStudents/updatePhotoStudentsController";
 import { registerStudentSchema } from "../schemas";
@@ -12,6 +13,7 @@ import { registerStudentSchema } from "../schemas";
 const studentsRouter = Router();
 
 const getStudentController = new GetStudentController();
+const getStudentByIdController = new GetStudentByIdController();
 
 const uploadPhoto = multer(multerConfig.upload());
 
@@ -23,12 +25,13 @@ studentsRouter.post(
 
 studentsRouter.post("/login", new LoginStudentController().login);
 
-studentsRouter.get("/", getStudentController.handle);
-
 studentsRouter.post(
   "/upload",
   uploadPhoto.single("file"),
   new UpdatePhotoStudentsController().handle
 );
+
+studentsRouter.get("/", getStudentController.handle);
+studentsRouter.get("/:id", getStudentByIdController.handle);
 
 export { studentsRouter };
