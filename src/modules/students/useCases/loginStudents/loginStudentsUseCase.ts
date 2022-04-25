@@ -31,6 +31,7 @@ class LoginStudentUseCase {
     const { id } = student;
     const accessToken = jwt.sign({ id }, JWT_CONFIG.SECRET_KEY, {
       expiresIn: JWT_CONFIG.EXPIRES_IN,
+      subject: id,
     });
 
     return accessToken;

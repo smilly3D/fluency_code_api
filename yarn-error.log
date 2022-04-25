@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\walla\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @types/mimes -D
+  C:\Program Files\nodejs\node.exe C:\Users\walla\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add tsyring
 
 PATH: 
   C:\Program Files\Microsoft\jdk-11.0.12.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;C:\Program Files\Amazon\AWSCLIV2\;C:\Program Files\Docker\Docker\resources\bin;C:\Users\walla\AppData\Local\Microsoft\WindowsApps;C:\Users\walla\AppData\Roaming\npm;C:\Users\walla\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\heroku\bin;C:\Users\walla\.dotnet\tools
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2fmimes: Not found
+  Error: https://registry.yarnpkg.com/tsyring: Not found
       at Request.params.callback [as _callback] (C:\Users\walla\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:67029:18)
       at Request.self.callback (C:\Users\walla\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140883:22)
       at Request.emit (node:events:520:28)
@@ -57,6 +57,7 @@ npm manifest:
         "@types/bcrypt": "^5.0.0",
         "@types/express": "^4.17.13",
         "@types/jsonwebtoken": "^8.5.8",
+        "@types/mime": "^2.0.3",
         "@types/multer": "^1.4.7",
         "@types/node": "^16.11.10",
         "@types/swagger-ui-express": "^4.1.3",
@@ -265,6 +266,11 @@ Lockfile:
     version "1.3.2"
     resolved "https://registry.yarnpkg.com/@types/mime/-/mime-1.3.2.tgz#93e25bf9ee75fe0fd80b594bc4feb0e862111b5a"
     integrity sha512-YATxVxgRqNH6nHEIsvg6k2Boc1JHI9ZbH5iWFFv/MTkchz3b1ieGDa5T0a9RznNdI0KhVbdbWSN+KWWrQZRxTw==
+  
+  "@types/mime@^2.0.3":
+    version "2.0.3"
+    resolved "https://registry.yarnpkg.com/@types/mime/-/mime-2.0.3.tgz#c893b73721db73699943bfc3653b1deb7faa4a3a"
+    integrity sha512-Jus9s4CDbqwocc5pOAnh8ShfrnMcPHuJYzVcSUU7lrh8Ni5HuIqX3oilL86p3dlTrk0LzHRCgA/GQ7uNCw6l2Q==
   
   "@types/multer@^1.4.7":
     version "1.4.7"

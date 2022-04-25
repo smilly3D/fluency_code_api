@@ -8,4 +8,5 @@ export interface IStudentsRepositories {
   findByCPF(cpf: string): Promise<Students>;
   list(): Promise<Students[]>;
   updatePhoto: (user_id: string, photo: string) => Promise<void>;
+  update: (user_id: string, data: any) => Promise<void>;
 }
