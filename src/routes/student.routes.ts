@@ -7,7 +7,7 @@ import { CreateStudentsController } from "../modules/students/useCases/createStu
 import { GetStudentController } from "../modules/students/useCases/getStudent/getStudentController";
 import { LoginStudentController } from "../modules/students/useCases/loginStudents/loginStudentsController";
 import { UpdatePhotoStudentsController } from "../modules/students/useCases/updatePhotoStudents/updatePhotoStudentsController";
-import { registerSchema } from "../schemas/registerSchema";
+import { registerStudentSchema } from "../schemas";
 
 const studentsRouter = Router();
 
@@ -17,7 +17,7 @@ const uploadPhoto = multer(multerConfig.upload());
 
 studentsRouter.post(
   "/register",
-  validateMiddleware(registerSchema),
+  validateMiddleware(registerStudentSchema),
   new CreateStudentsController().handle
 );
 
