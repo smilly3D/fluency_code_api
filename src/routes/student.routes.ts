@@ -6,26 +6,26 @@ import { authenticate } from "../middlewares/authenticateMiddleware";
 import { validateMiddleware } from "../middlewares/validateMiddleware";
 import { CreateStudentsController } from "../modules/students/useCases/createStudents/createStudentsController";
 import { GetStudentController } from "../modules/students/useCases/getStudent/getStudentController";
+import { GetStudentByIdController } from "../modules/students/useCases/getStudentById/getStudentByIdController";
 import { LoginStudentController } from "../modules/students/useCases/loginStudents/loginStudentsController";
 import { UpdatePhotoStudentsController } from "../modules/students/useCases/updatePhotoStudents/updatePhotoStudentsController";
 import { UpdateStudentsController } from "../modules/students/useCases/updateStudents/updateStudentsController";
-import { registerSchema } from "../schemas/registerSchema";
+import { registerStudentSchema } from "../schemas";
 
 const studentsRouter = Router();
 
 const getStudentController = new GetStudentController();
+const getStudentByIdController = new GetStudentByIdController();
 
 const uploadPhoto = multer(multerConfig.upload());
 
 studentsRouter.post(
   "/register",
-  validateMiddleware(registerSchema),
+  validateMiddleware(registerStudentSchema),
   new CreateStudentsController().handle
 );
 
 studentsRouter.post("/login", new LoginStudentController().login);
-
-studentsRouter.get("/", getStudentController.handle);
 
 studentsRouter.post(
   "/upload",
@@ -38,5 +38,8 @@ studentsRouter.patch(
   authenticate,
   new UpdateStudentsController().handle
 );
+
+studentsRouter.get("/", getStudentController.handle);
+studentsRouter.get("/:id", getStudentByIdController.handle);
 
 export { studentsRouter };
