@@ -15,6 +15,8 @@ class GetStudentByIdController {
         return res.status(404).json({ message: "Student not found" });
       }
 
+      delete student.password;
+
       return res.json(student);
     } catch (e) {
       return res.status(400).json({ message: "invalid id" });
