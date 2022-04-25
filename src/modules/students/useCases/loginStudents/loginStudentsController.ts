@@ -4,7 +4,7 @@ import { container } from "tsyringe";
 import { LoginStudentUseCase } from "./loginStudentsUseCase";
 
 class LoginStudentController {
-  async login(request: Request, response: Response): Promise<Response> {
+  async handle(request: Request, response: Response): Promise<Response> {
     const { email, password } = request.body;
 
     const loginStudentsUseCase = container.resolve(LoginStudentUseCase);

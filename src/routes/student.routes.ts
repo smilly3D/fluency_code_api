@@ -21,7 +21,7 @@ studentsRouter.post(
   new CreateStudentsController().handle
 );
 
-studentsRouter.post("/login", new LoginStudentController().login);
+studentsRouter.post("/login", new LoginStudentController().handle);
 
 studentsRouter.get("/", getStudentController.handle);
 
