@@ -57,9 +57,12 @@ export class StudentsRepositories implements IStudentsRepositories {
     await repo.save(user);
   }
 
-  async delete(user_id: string): Promise<Students> {
-    const student = await this.repository.findOne({ id: user_id });
-    const deleteStudent = await this.repository.delete(student);
-    return deleteStudent;
+  async delete(id: string): Promise<Students> {
+    const user = await this.repository.findOne({ id });
+    if (user) {
+      await this.repository.delete(user);
+    }
+
+    return user;
   }
 }

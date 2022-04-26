@@ -10,8 +10,8 @@ class DeleteStudentUseCase {
     private studentsRepositories: IStudentsRepositories
   ) { }
 
-  execute(): Promise<Students[]> {
-    const student = this.studentsRepositories.delete();
+  execute(id: string): Promise<Students> {
+    const student = this.studentsRepositories.findById(id);
     return student;
   }
 }
