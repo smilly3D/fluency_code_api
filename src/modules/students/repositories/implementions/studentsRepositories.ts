@@ -1,3 +1,4 @@
+import bcrypt from "bcrypt";
 import { getRepository, Repository } from "typeorm";
 
 import { ICreateStudents } from "../../@types";
@@ -53,6 +54,23 @@ export class StudentsRepositories implements IStudentsRepositories {
 
     user.photo_url = photo;
     user.updatedOn = new Date();
+
+    await repo.save(user);
+  }
+
+  async update(user_id: string, data: any): Promise<void> {
+    const repo = getRepository(Students);
+
+    const user = await repo.findOne({ id: user_id });
+
+    user.cpf = data.cpf ? data.cpf : user.cpf;
+    user.phone = data.phone ? data.phone : user.phone;
+    user.biography = data.biography ? data.biography : user.biography;
+    user.description = data.description ? data.description : user.description;
+    user.name = data.name ? data.name : user.name;
+    user.password = data.password
+      ? await bcrypt.hash(data.password, 10)
+      : user.password;
 
     await repo.save(user);
   }

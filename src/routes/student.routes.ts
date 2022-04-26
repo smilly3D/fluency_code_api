@@ -2,12 +2,14 @@ import { Router } from "express";
 import multer from "multer";
 
 import multerConfig from "../configs/multer/multerConfig";
+import { authenticate } from "../middlewares/authenticateMiddleware";
 import { validateMiddleware } from "../middlewares/validateMiddleware";
 import { CreateStudentsController } from "../modules/students/useCases/createStudents/createStudentsController";
 import { GetStudentController } from "../modules/students/useCases/getStudent/getStudentController";
 import { GetStudentByIdController } from "../modules/students/useCases/getStudentById/getStudentByIdController";
 import { LoginStudentController } from "../modules/students/useCases/loginStudents/loginStudentsController";
 import { UpdatePhotoStudentsController } from "../modules/students/useCases/updatePhotoStudents/updatePhotoStudentsController";
+import { UpdateStudentsController } from "../modules/students/useCases/updateStudents/updateStudentsController";
 import { registerStudentSchema } from "../schemas";
 
 const studentsRouter = Router();
@@ -29,6 +31,12 @@ studentsRouter.post(
   "/upload",
   uploadPhoto.single("file"),
   new UpdatePhotoStudentsController().handle
+);
+
+studentsRouter.patch(
+  "/profile",
+  authenticate,
+  new UpdateStudentsController().handle
 );
 
 studentsRouter.get("/", getStudentController.handle);
