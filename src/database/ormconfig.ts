@@ -1,12 +1,14 @@
 import path from "path";
 import { ConnectionOptions } from "typeorm";
 
-import { DATABASE_URL } from "../configs";
+import { DATABASE_URL, isDev } from "../configs";
+
+const ssl = isDev ? "" : { rejectUnauthorized: false };
 
 const devConfig = {
   type: "postgres",
   url: DATABASE_URL,
-	ssl: { rejectUnauthorized: false },
+  ssl,
   migrations: [path.join(__dirname, "./migrations/*.*")],
   entities: [path.join(__dirname, "../modules/**/entities/*.*")],
   cli: {

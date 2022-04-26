@@ -11,6 +11,8 @@ const JWT_CONFIG = {
 
 const { DATABASE_URL } = process.env;
 
+const { isDev } = process.env;
+
 const { HOST } = process.env;
 
-export { JWT_CONFIG, DATABASE_URL, PORT, HOST };
+export { JWT_CONFIG, DATABASE_URL, PORT, HOST, isDev };
