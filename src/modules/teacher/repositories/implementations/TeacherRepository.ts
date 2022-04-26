@@ -49,6 +49,10 @@ class TeacherRepository implements ITeacherRepository {
     const teacher = await this.repository.findOne({ cpf });
     return teacher;
   }
+
+  async list(): Promise<Teacher[]> {
+    return this.repository.find();
+  }
 }
 
 export { TeacherRepository };

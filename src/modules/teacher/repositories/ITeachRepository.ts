@@ -6,6 +6,7 @@ interface ITeacherRepository {
   findByEmail(email: string): Promise<Teacher>;
   findById(id: string): Promise<Teacher>;
   findByCPF(cpf: string): Promise<Teacher>;
+  list(): Promise<Teacher[]>;
 }
 
 export { ITeacherRepository };

@@ -1,4 +1,5 @@
 import { createConnection, getConnectionOptions } from "typeorm";
+
 import { HOST } from "../configs";
 
 interface IOptions {
@@ -7,7 +8,7 @@ interface IOptions {
 
 getConnectionOptions().then((options) => {
   const newOptions = options as IOptions;
-  newOptions.host = HOST;
+  newOptions.host = "localhost";
   createConnection({
     ...options,
   });
