@@ -53,6 +53,10 @@ class TeacherRepository implements ITeacherRepository {
   async list(): Promise<Teacher[]> {
     return this.repository.find();
   }
+
+  async delete(teacher: Teacher): Promise<void> {
+    await this.repository.remove(teacher);
+  }
 }
 
 export { TeacherRepository };
