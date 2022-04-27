@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 
-import { Students } from "../../entities/Student";
+import { AppError } from "../../../../errors/AppError";
 import { IStudentsRepositories } from "../../repositories/IStudentsRepositories";
 
 @injectable()
@@ -10,9 +10,12 @@ class DeleteStudentUseCase {
     private studentsRepositories: IStudentsRepositories
   ) { }
 
-  execute(id: string): Promise<Students> {
-    const student = this.studentsRepositories.findById(id);
-    return student;
+  async execute(id: string): Promise<string | Error> {
+    const student = await this.studentsRepositories.findById(id);
+    if (!student) {
+      throw new AppError("User already exists", 404);
+    }
+    return "Student deleted with success";
   }
 }
 
