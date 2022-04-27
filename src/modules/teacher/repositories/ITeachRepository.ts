@@ -7,6 +7,7 @@ interface ITeacherRepository {
   findById(id: string): Promise<Teacher>;
   findByCPF(cpf: string): Promise<Teacher>;
   list(): Promise<Teacher[]>;
+  delete(teacher: Teacher): Promise<void>;
 }
 
 export { ITeacherRepository };
