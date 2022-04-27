@@ -5,20 +5,12 @@ import { DeleteStudentUseCase } from "./deleteStudentUseCase";
 
 class DeleteStudentController {
   async handle(req: Request, res: Response): Promise<Response> {
-    try {
-      const deleteStudentUseCase = container.resolve(DeleteStudentUseCase);
-      const { id } = req.params;
+    const { id } = req.params;
+    const deleteStudentUseCase = container.resolve(DeleteStudentUseCase);
 
-      const student = await deleteStudentUseCase.execute(id);
+    const message = await deleteStudentUseCase.execute(id);
 
-      if (!student) {
-        return res.status(404).json({ message: "Student not found" });
-      }
-
-      return res.json(student);
-    } catch (e) {
-      return res.status(400).json({ message: "invalid id" });
-    }
+    return res.json({ message });
   }
 }
 
