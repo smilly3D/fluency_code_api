@@ -15,7 +15,6 @@ const getTeacherController = new GetTeacherController();
 const loginTeacherController = new LoginTeacherController();
 const deleteTeacherController = new DeleteTeacherController();
 
-
 const getTeacherByIdController = new GetTeacherByIdController();
 
 teachersRoutes.get("/", getTeacherController.handle);
@@ -33,6 +32,5 @@ teachersRoutes.post(
 );
 
 teachersRoutes.delete("/:id", deleteTeacherController.handle);
-
 
 export { teachersRoutes };
