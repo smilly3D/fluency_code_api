@@ -9,8 +9,10 @@ const JWT_CONFIG = {
   EXPIRES_IN: process.env.EXPIRES_IN,
 };
 
-const { DB_URI } = process.env;
+const { DATABASE_URL } = process.env;
+
+const { isDev } = process.env;
 
 const { HOST } = process.env;
 
-export { JWT_CONFIG, DB_URI, PORT, HOST };
+export { JWT_CONFIG, DATABASE_URL, PORT, HOST, isDev };

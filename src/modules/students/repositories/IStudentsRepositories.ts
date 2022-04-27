@@ -9,4 +9,5 @@ export interface IStudentsRepositories {
   list(): Promise<Students[]>;
   updatePhoto: (user_id: string, photo: string) => Promise<void>;
   delete(student: Students): Promise<void>;
+  update: (user_id: string, data: any) => Promise<void>;
 }

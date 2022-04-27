@@ -1,4 +1,5 @@
 import express, { NextFunction, Request, Response } from "express";
+import listEndpoints from "express-list-endpoints";
 import swaggerUI from "swagger-ui-express";
 
 import { AppError } from "./errors/AppError";
@@ -28,6 +29,12 @@ app.use(
       message: `Internal server error - ${err.message}`,
     });
   }
+);
+
+console.table(
+  listEndpoints(app).map(({ methods, path }) => {
+    return { methods, path };
+  })
 );
 
 export { app };
