@@ -11,7 +11,7 @@ interface IPayload {
 }
 
 export const authenticate =
-  (types: string[]) =>
+  (types: string[] = ["admin", "student", "teacher"]) =>
   (request: Request, response: Response, next: NextFunction) => {
     const authHeader = request.headers.authorization;
 
@@ -22,10 +22,7 @@ export const authenticate =
     const token = authHeader.split(" ")[1];
 
     try {
-      const { sub: id, type } = verify(
-        token,
-        process.env.SECRET_KEY
-      ) as IPayload;
+      const { sub: id, type } = verify(token, process.env.SECRET_KEY) as IPayload;
 
       if (!types.includes(type)) {
         return response.status(401).json({ message: "Unauthorized" });
