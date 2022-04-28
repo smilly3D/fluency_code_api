@@ -2,8 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import * as yup from "yup";
 
 export const validateMiddleware =
-  (schema: yup.AnyObjectSchema) =>
-  async (request: Request, response: Response, next: NextFunction) => {
+  (schema: yup.AnyObjectSchema) => async (request: Request, response: Response, next: NextFunction) => {
     const resource = request.body;
 
     try {

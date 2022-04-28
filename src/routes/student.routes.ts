@@ -31,9 +31,8 @@ studentsRouter.post("/login", new LoginStudentController().login);
 studentsRouter.get("/profile", authenticate(), getStudentProfileController.handle);
 studentsRouter.patch("/profile", authenticate(), new UpdateStudentsController().handle);
 
-studentsRouter.get("/:id", authenticate(["admins"]), getStudentByIdController.handle);
-studentsRouter.delete("/:id", authenticate(["admin"]), deleteStudentController.handle);
-
 studentsRouter.post("/upload", uploadPhoto.single("file"), new UpdatePhotoStudentsController().handle);
 
+studentsRouter.get("/:id", authenticate(["admins"]), getStudentByIdController.handle);
+studentsRouter.delete("/:id", authenticate(["admin"]), deleteStudentController.handle);
 export { studentsRouter };
