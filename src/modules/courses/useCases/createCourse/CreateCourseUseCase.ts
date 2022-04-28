@@ -5,7 +5,7 @@ import { ICreateCourseDTO } from "../../dtos/ICreateCourseDTO";
 import { CoursesRepositories } from "../../repositories/implementions/coursesRepositories";
 
 @injectable()
-class CreateAdminUseCase {
+class CreateCourseUseCase {
   constructor(
     @inject("CoursesRepositories")
     private coursesRepositories: CoursesRepositories
@@ -33,5 +33,5 @@ class CreateAdminUseCase {
       trainingFor,
     });
   }
-
-export { CreateAdminUseCase };
+}
+export { CreateCourseUseCase };
