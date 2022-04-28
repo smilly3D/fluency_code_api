@@ -1,6 +1,7 @@
 import { Router } from "express";
 
 import { validateMiddleware } from "../middlewares/validateMiddleware";
+import { AproveTeacherController } from "../modules/teacher/useCases/aproveTeacher/AproveTeacherController";
 import { CreateTeacherController } from "../modules/teacher/useCases/createTeacher/CreateUserController";
 import { DeleteTeacherController } from "../modules/teacher/useCases/deleteTeacher/DeleteTeacherController";
 import { GetTeacherController } from "../modules/teacher/useCases/getTeacher/GetTeacherController";
@@ -17,6 +18,7 @@ const loginTeacherController = new LoginTeacherController();
 const deleteTeacherController = new DeleteTeacherController();
 const getTeacherByIdController = new GetTeacherByIdController();
 const updateTeacherController = new UpdateTeacherController();
+const aproveTeacherController = new AproveTeacherController();
 
 teachersRoutes.get("/", getTeacherController.handle);
 teachersRoutes.get("/:id", getTeacherByIdController.handle);
@@ -35,5 +37,6 @@ teachersRoutes.post(
 teachersRoutes.delete("/:id", deleteTeacherController.handle);
 
 teachersRoutes.patch("/:teacher_id", updateTeacherController.handle);
+teachersRoutes.patch("/aprove/:teacher_id", aproveTeacherController.handle);
 
 export { teachersRoutes };

@@ -42,6 +42,9 @@ class Teacher {
   @CreateDateColumn()
   updatedOn: Date;
 
+  @Column({ default: false })
+  isApproved: boolean;
+
   constructor() {
     if (!this.id) {
       this.id = uuidV4();
