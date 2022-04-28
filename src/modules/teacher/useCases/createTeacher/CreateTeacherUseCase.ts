@@ -10,7 +10,7 @@ class CreateTeacherUseCase {
   constructor(
     @inject("TeacherRepository")
     private teacherRepository: ITeacherRepository
-  ) {}
+  ) { }
   async execute({
     biography,
     cpf,
@@ -23,17 +23,15 @@ class CreateTeacherUseCase {
     photo_url,
     description,
   }: ICreateTeacherDTO): Promise<void> {
-    const teacherAlreadyExists = await this.teacherRepository.findByEmail(
-      email
-    );
+    const teacherAlreadyExists = await this.teacherRepository.findByEmail(email);
 
     if (teacherAlreadyExists) {
-      throw new AppError("User already exists");
+      throw new AppError("Email already exists", 409);
     }
     const cpfAlreadyExists = await this.teacherRepository.findByCPF(cpf);
 
     if (cpfAlreadyExists) {
-      throw new AppError("CPF already exists");
+      throw new AppError("CPF already exists", 409);
     }
 
     const passwordHash = await hash(password, 8);
