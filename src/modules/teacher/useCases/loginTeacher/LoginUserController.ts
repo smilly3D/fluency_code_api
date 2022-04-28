@@ -11,7 +11,7 @@ class LoginTeacherController {
 
     const token = await loginTeacherUseCase.execute({ email, password });
 
-    return response.status(201).json({ token });
+    return response.json({ token });
   }
 }
 
