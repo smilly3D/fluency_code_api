@@ -6,6 +6,7 @@ import { authenticate } from "../middlewares/authenticateMiddleware";
 import { validateMiddleware } from "../middlewares/validateMiddleware";
 import { CreateStudentsController } from "../modules/students/useCases/createStudents/createStudentsController";
 import { DeleteStudentController } from "../modules/students/useCases/deleteStudent/deleteStudentController";
+import { DeleteStudentProfileController } from "../modules/students/useCases/deleteStudentsProfile/deleteStudentsProfileController";
 import { GetStudentProfileController } from "../modules/students/useCases/getStudenProfile/getStudentProfileController";
 import { GetStudentController } from "../modules/students/useCases/getStudent/getStudentController";
 import { GetStudentByIdController } from "../modules/students/useCases/getStudentById/getStudentByIdController";
@@ -30,6 +31,7 @@ studentsRouter.post("/login", new LoginStudentController().login);
 
 studentsRouter.get("/profile", authenticate(), getStudentProfileController.handle);
 studentsRouter.patch("/profile", authenticate(), new UpdateStudentsController().handle);
+studentsRouter.delete("/profile", authenticate, new DeleteStudentProfileController().handle);
 
 studentsRouter.post("/upload", uploadPhoto.single("file"), new UpdatePhotoStudentsController().handle);
 
