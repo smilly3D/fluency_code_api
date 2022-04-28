@@ -54,18 +54,18 @@ class AdminRepository implements IAdminRepository {
   async update(id: string, data: any): Promise<void> {
     const repo = getRepository(Admin);
 
-    const user = await repo.findOne({ id });
+    const admin = await repo.findOne(id);
 
-    user.cpf = data.cpf ?? user.cpf;
-    user.phone = data.phone ?? user.phone;
-    user.biography = data.biography ?? user.biography;
-    user.description = data.description ?? user.description;
-    user.name = data.name ?? user.name;
-    user.password = data.password
+    admin.cpf = data.cpf ?? admin.cpf;
+    admin.phone = data.phone ?? admin.phone;
+    admin.biography = data.biography ?? admin.biography;
+    admin.description = data.description ?? admin.description;
+    admin.name = data.name ?? admin.name;
+    admin.password = data.password
       ? await bcrypt.hash(data.password, 10)
-      : user.password;
+      : admin.password;
 
-    await repo.save(user);
+    await repo.save(admin);
   }
 }
 
