@@ -1,5 +1,6 @@
 import { Router } from "express";
 
+import { authenticate } from "../middlewares/authenticateMiddleware";
 import { validateMiddleware } from "../middlewares/validateMiddleware";
 import { AproveTeacherController } from "../modules/teacher/useCases/aproveTeacher/AproveTeacherController";
 import { CreateTeacherController } from "../modules/teacher/useCases/createTeacher/CreateUserController";
@@ -20,7 +21,7 @@ const getTeacherByIdController = new GetTeacherByIdController();
 const updateTeacherController = new UpdateTeacherController();
 const aproveTeacherController = new AproveTeacherController();
 
-teachersRoutes.get("/", getTeacherController.handle);
+teachersRoutes.get("/", authenticate(["admin", "teacher"]), getTeacherController.handle);
 teachersRoutes.get("/:id", getTeacherByIdController.handle);
 
 teachersRoutes.post("/", validateMiddleware(registerTeacherSchema), createTeacherControler.handle);
