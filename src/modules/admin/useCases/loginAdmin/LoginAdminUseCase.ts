@@ -17,17 +17,18 @@ class LoginAdminUseCase {
     const admin = await this.adminRepository.findByEmail(email);
 
     if (!admin) {
-      throw new AppError("User already exists", 404);
+      throw new AppError("Wrong email/password", 401);
     }
 
     const hasedPassword = await bcrypt.compare(password, admin.password);
 
     if (!hasedPassword) {
-      throw new AppError("Invalid Password");
+      throw new AppError("Wrong email/password", 401);
     }
     const { id } = admin;
-    const accessToken = jwt.sign({ id }, JWT_CONFIG.SECRET_KEY, {
+    const accessToken = jwt.sign({ type: "admin" }, JWT_CONFIG.SECRET_KEY, {
       expiresIn: JWT_CONFIG.EXPIRES_IN,
+			subject: id,
     });
 
     return accessToken;
