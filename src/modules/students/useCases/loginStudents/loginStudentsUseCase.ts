@@ -20,7 +20,7 @@ class LoginStudentUseCase {
     const student = await this.studentsRepositories.findByEmail(email);
 
     if (!student) {
-      throw new AppError("User already exists", 404);
+      throw new AppError("User not exists!", 404);
     }
 
     const hasedPassword = await bcrypt.compare(password, student.password);
@@ -28,10 +28,10 @@ class LoginStudentUseCase {
     if (!hasedPassword) {
       throw new AppError("Invalid Password");
     }
-    const { id } = student;
-    const accessToken = jwt.sign({ id }, JWT_CONFIG.SECRET_KEY, {
+
+    const accessToken = jwt.sign({ type: "students" }, JWT_CONFIG.SECRET_KEY, {
       expiresIn: JWT_CONFIG.EXPIRES_IN,
-      subject: id,
+      subject: student.id,
     });
 
     return accessToken;
