@@ -5,6 +5,7 @@ import multerConfig from "../configs/multer/multerConfig";
 import { authenticate } from "../middlewares/authenticateMiddleware";
 import { validateMiddleware } from "../middlewares/validateMiddleware";
 import { CreateStudentsController } from "../modules/students/useCases/createStudents/createStudentsController";
+import { DeleteStudentController } from "../modules/students/useCases/deleteStudent/deleteStudentController";
 import { GetStudentProfileController } from "../modules/students/useCases/getStudenProfile/getStudentProfileController";
 import { GetStudentController } from "../modules/students/useCases/getStudent/getStudentController";
 import { GetStudentByIdController } from "../modules/students/useCases/getStudentById/getStudentByIdController";
@@ -16,6 +17,7 @@ import { registerStudentSchema } from "../schemas";
 const studentsRouter = Router();
 
 const getStudentController = new GetStudentController();
+const deleteStudentController = new DeleteStudentController();
 const getStudentByIdController = new GetStudentByIdController();
 const getStudentProfileController = new GetStudentProfileController();
 
@@ -35,6 +37,7 @@ studentsRouter.post(
   new UpdatePhotoStudentsController().handle
 );
 
+studentsRouter.delete("/:id", deleteStudentController.handle);
 studentsRouter.patch(
   "/profile",
   authenticate,

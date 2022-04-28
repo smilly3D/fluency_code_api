@@ -2,6 +2,8 @@ import { container } from "tsyringe";
 
 import { IAdminRepository } from "../../modules/admin/repositories/IAdminRepository";
 import { AdminRepository } from "../../modules/admin/repositories/implementations/AdminRepository";
+import { ICoursesRepositories } from "../../modules/courses/repositories/ICoursesRepositories";
+import { CoursesRepositories } from "../../modules/courses/repositories/implementions/coursesRepositories";
 import { StudentsRepositories } from "../../modules/students/repositories/implementions/studentsRepositories";
 import { IStudentsRepositories } from "../../modules/students/repositories/IStudentsRepositories";
 import { TeacherRepository } from "../../modules/teacher/repositories/implementations/TeacherRepository";
@@ -22,6 +24,11 @@ container.registerSingleton<IStudentsRepositories>(
 container.registerSingleton<ITeacherRepository>(
   "TeacherRepository",
   TeacherRepository
+);
+
+container.registerSingleton<ICoursesRepositories>(
+  "CoursesRepositories",
+  CoursesRepositories
 );
 
 container.registerSingleton<IS3Provider>("S3Provider", S3Provider);

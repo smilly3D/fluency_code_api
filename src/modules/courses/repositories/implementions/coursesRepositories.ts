@@ -1,0 +1,21 @@
+import { getRepository, Repository } from "typeorm";
+
+import { Courses } from "../../entities/Courses";
+import { ICoursesRepositories } from "../ICoursesRepositories";
+
+export class CoursesRepositories implements ICoursesRepositories {
+  private repository: Repository<Courses>;
+
+  constructor() {
+    this.repository = getRepository(Courses);
+  }
+
+  async findById(id: string): Promise<Courses> {
+    const course = await this.repository.findOne(id);
+    return course;
+  }
+
+  async list(): Promise<Courses[]> {
+    return this.repository.find();
+  }
+}
