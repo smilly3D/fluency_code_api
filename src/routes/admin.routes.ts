@@ -17,7 +17,6 @@ const loginAdminController = new LoginAdminController();
 const updateAdminController = new UpdateadminController();
 const deleteAdminController = new DeleteAdminController();
 
-
 adminRoutes.get("/", getAdminController.handle);
 adminRoutes.post(
   "/",
@@ -32,6 +31,5 @@ adminRoutes.post(
 
 adminRoutes.patch("/", authenticate, updateAdminController.handle);
 adminRoutes.delete("/:id", deleteAdminController.handle);
-
 
 export { adminRoutes };
