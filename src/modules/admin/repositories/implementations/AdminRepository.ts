@@ -49,6 +49,10 @@ class AdminRepository implements IAdminRepository {
   async list(): Promise<Admin[]> {
     return this.repository.find();
   }
+
+  async delete(admin: Admin): Promise<void> {
+    await this.repository.remove(admin);
+  }
 }
 
 export { AdminRepository };

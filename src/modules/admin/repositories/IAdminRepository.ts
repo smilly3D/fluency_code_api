@@ -7,6 +7,7 @@ interface IAdminRepository {
   findById(id: string): Promise<Admin>;
   findByCPF(cpf: string): Promise<Admin>;
   list(): Promise<Admin[]>;
+  delete(admin: Admin): Promise<void>;
 }
 
 export { IAdminRepository };
