@@ -73,6 +73,11 @@ export class teacher1650141367476 implements MigrationInterface {
             type: "timestamp",
             default: "now()",
           },
+          {
+            name: "isApproved",
+            type: "boolean",
+            default: "false",
+          },
         ],
       })
     );
