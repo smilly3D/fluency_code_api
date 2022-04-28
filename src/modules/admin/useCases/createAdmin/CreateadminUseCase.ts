@@ -24,12 +24,12 @@ class CreateAdminUseCase {
     const adminAlreadyExists = await this.adminRepository.findByEmail(email);
 
     if (adminAlreadyExists) {
-      throw new AppError("User already exists");
+      throw new AppError("Email already exists", 409);
     }
     const cpfAlreadyExists = await this.adminRepository.findByCPF(cpf);
 
     if (cpfAlreadyExists) {
-      throw new AppError("CPF already exists");
+      throw new AppError("CPF already exists", 409);
     }
 
     const passwordHash = await hash(password, 8);

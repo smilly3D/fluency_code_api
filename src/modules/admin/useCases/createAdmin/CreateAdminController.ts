@@ -29,7 +29,7 @@ class CreateAdminController {
       description,
     });
 
-    return response.status(201).send();
+    return response.status(201).json({ message: "Admin created successfully" });
   }
 }
 

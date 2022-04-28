@@ -6,7 +6,7 @@ import { CreateAdminController } from "../modules/admin/useCases/createAdmin/Cre
 import { DeleteAdminController } from "../modules/admin/useCases/deleteAdmin/deleteAdminController";
 import { GetAdminController } from "../modules/admin/useCases/getAdmin/GetAdminController";
 import { LoginAdminController } from "../modules/admin/useCases/loginAdmin/LoginAdminController";
-import { UpdateadminController } from "../modules/admin/useCases/updateStudents/updateStudentsController";
+import { UpdateAdminController } from "../modules/admin/useCases/updateAdmin/updateAdminController";
 import { loginSchema, registerAdminSchema } from "../schemas";
 
 const adminRoutes = Router();
@@ -14,14 +14,14 @@ const adminRoutes = Router();
 const createAdminControler = new CreateAdminController();
 const getAdminController = new GetAdminController();
 const loginAdminController = new LoginAdminController();
-const updateAdminController = new UpdateadminController();
+const updateAdminController = new UpdateAdminController();
 const deleteAdminController = new DeleteAdminController();
 
-adminRoutes.get("/", getAdminController.handle);
-adminRoutes.post("/", validateMiddleware(registerAdminSchema), createAdminControler.handle);
+adminRoutes.get("/", authenticate(["admin"]), getAdminController.handle);
+adminRoutes.post("/", authenticate(["admin"]), validateMiddleware(registerAdminSchema), createAdminControler.handle);
 adminRoutes.post("/login", validateMiddleware(loginSchema), loginAdminController.handle);
 
-adminRoutes.patch("/", authenticate, updateAdminController.handle);
-adminRoutes.delete("/:id", deleteAdminController.handle);
+adminRoutes.patch("/:id", authenticate(["admin"]), updateAdminController.handle);
+adminRoutes.delete("/:id", authenticate(["admin"]), deleteAdminController.handle);
 
 export { adminRoutes };
