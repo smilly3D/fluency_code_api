@@ -6,6 +6,7 @@ import { authenticate } from "../middlewares/authenticateMiddleware";
 import { validateMiddleware } from "../middlewares/validateMiddleware";
 import { CreateStudentsController } from "../modules/students/useCases/createStudents/createStudentsController";
 import { DeleteStudentController } from "../modules/students/useCases/deleteStudent/deleteStudentController";
+import { DeleteStudentProfileController } from "../modules/students/useCases/deleteStudentsProfile/deleteStudentsProfileController";
 import { GetStudentController } from "../modules/students/useCases/getStudent/getStudentController";
 import { GetStudentByIdController } from "../modules/students/useCases/getStudentById/getStudentByIdController";
 import { LoginStudentController } from "../modules/students/useCases/loginStudents/loginStudentsController";
@@ -36,6 +37,13 @@ studentsRouter.post(
 );
 
 studentsRouter.delete("/:id", deleteStudentController.handle);
+
+studentsRouter.delete(
+  "/profile",
+  authenticate,
+  new DeleteStudentProfileController().handle
+);
+
 studentsRouter.patch(
   "/profile",
   authenticate,

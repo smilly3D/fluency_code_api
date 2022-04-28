@@ -16,8 +16,6 @@ export const authenticate = (
     if (err) {
       return response.status(401).json({ message: "invalid token." });
     }
-
-    return next();
   });
 
   return next();
