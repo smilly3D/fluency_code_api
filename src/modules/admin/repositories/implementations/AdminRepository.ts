@@ -67,6 +67,7 @@ class AdminRepository implements IAdminRepository {
 
     await repo.save(admin);
   }
+
   async delete(admin: Admin): Promise<void> {
     await this.repository.remove(admin);
   }
