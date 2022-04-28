@@ -1,5 +1,6 @@
 import { getRepository, Repository } from "typeorm";
 
+import { ICreateCourseDTO } from "../../dtos/ICreateCourseDTO";
 import { Courses } from "../../entities/Courses";
 import { ICoursesRepositories } from "../ICoursesRepositories";
 
@@ -17,5 +18,15 @@ export class CoursesRepositories implements ICoursesRepositories {
 
   async list(): Promise<Courses[]> {
     return this.repository.find();
+  }
+
+  async create(course: ICreateCourseDTO): Promise<string | Error> {
+    const repo = this.repository;
+
+    const courseCreate = repo.create(course);
+
+    await repo.save(courseCreate);
+
+    return "Course created successfully";
   }
 }

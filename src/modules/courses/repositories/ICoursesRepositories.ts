@@ -4,5 +4,5 @@ import { Courses } from "../entities/Courses";
 export interface ICoursesRepositories {
   findById(id: string): Promise<Courses>;
   list(): Promise<Courses[]>;
-  create: (student: ICreateCourseDTO) => Promise<string | Error>;
+  create: (course: ICreateCourseDTO) => Promise<string | Error>;
 }
