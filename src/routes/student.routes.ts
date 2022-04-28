@@ -23,30 +23,29 @@ const getStudentProfileController = new GetStudentProfileController();
 
 const uploadPhoto = multer(multerConfig.upload());
 
+studentsRouter.get("/", getStudentController.handle);
 studentsRouter.post(
-  "/register",
+  "/",
   validateMiddleware(registerStudentSchema),
   new CreateStudentsController().handle
 );
 
 studentsRouter.post("/login", new LoginStudentController().login);
 
-studentsRouter.post(
-  "/upload",
-  uploadPhoto.single("file"),
-  new UpdatePhotoStudentsController().handle
-);
-
+studentsRouter.get("/:id", getStudentByIdController.handle);
 studentsRouter.delete("/:id", deleteStudentController.handle);
+
+studentsRouter.get("/profile", getStudentProfileController.handle);
 studentsRouter.patch(
   "/profile",
   authenticate,
   new UpdateStudentsController().handle
 );
 
-studentsRouter.get("/profile", getStudentProfileController.handle);
-
-studentsRouter.get("/", getStudentController.handle);
-studentsRouter.get("/:id", getStudentByIdController.handle);
+studentsRouter.post(
+  "/upload",
+  uploadPhoto.single("file"),
+  new UpdatePhotoStudentsController().handle
+);
 
 export { studentsRouter };
