@@ -21,16 +21,8 @@ const updateTeacherController = new UpdateTeacherController();
 teachersRoutes.get("/", getTeacherController.handle);
 teachersRoutes.get("/:id", getTeacherByIdController.handle);
 
-teachersRoutes.post(
-  "/",
-  validateMiddleware(registerTeacherSchema),
-  createTeacherControler.handle
-);
-teachersRoutes.post(
-  "/login",
-  validateMiddleware(loginSchema),
-  loginTeacherController.handle
-);
+teachersRoutes.post("/", validateMiddleware(registerTeacherSchema), createTeacherControler.handle);
+teachersRoutes.post("/login", validateMiddleware(loginSchema), loginTeacherController.handle);
 
 teachersRoutes.delete("/:id", deleteTeacherController.handle);
 

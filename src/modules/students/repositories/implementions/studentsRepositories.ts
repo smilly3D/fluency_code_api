@@ -1,8 +1,8 @@
-import bcrypt from "bcrypt";
 import { getRepository, Repository } from "typeorm";
 
 import { ICreateStudents } from "../../@types";
 import { Students } from "../../entities/Student";
+import { IUpdateStudentsDTO } from "../../useCases/updateStudents/IUpdateStudentsDTO";
 import { IStudentsRepositories } from "../IStudentsRepositories";
 
 export class StudentsRepositories implements IStudentsRepositories {
@@ -62,19 +62,15 @@ export class StudentsRepositories implements IStudentsRepositories {
     await this.repository.remove(student);
   }
 
-  async update(user_id: string, data: any): Promise<void> {
+  async update(
+    user_id: string,
+    { cpf, phone, biography, description, name, password, photo_url }: IUpdateStudentsDTO
+  ): Promise<void> {
     const repo = getRepository(Students);
 
     const user = await repo.findOne({ id: user_id });
 
-    user.cpf = data.cpf ? data.cpf : user.cpf;
-    user.phone = data.phone ? data.phone : user.phone;
-    user.biography = data.biography ? data.biography : user.biography;
-    user.description = data.description ? data.description : user.description;
-    user.name = data.name ? data.name : user.name;
-    user.password = data.password
-      ? await bcrypt.hash(data.password, 10)
-      : user.password;
+    Object.assign(user, { cpf, phone, biography, description, name, password, photo_url });
 
     await repo.save(user);
   }

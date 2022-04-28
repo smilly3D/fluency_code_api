@@ -6,11 +6,11 @@ import { updateStudentsUseCase } from "./updateStudentsUseCase";
 export class UpdateStudentsController {
   async handle(request: Request, response: Response): Promise<Response> {
     const data = request.body;
-    const token = request.headers.authorization.split(" ")[1];
+    const { id } = request;
 
     const updated = container.resolve(updateStudentsUseCase);
 
-    updated.execute({ token, data });
+    updated.execute({ id, data });
 
     return response.status(202).json({ message: "Updated Success" });
   }
