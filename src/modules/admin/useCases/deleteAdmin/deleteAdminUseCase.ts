@@ -19,7 +19,7 @@ class DeleteAdminUseCase {
 
     await this.adminRepository.delete(admin);
 
-    return "Student deleted with success";
+    return "Admin deleted with success";
   }
 }
 
