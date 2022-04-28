@@ -21,17 +21,21 @@ class CreateCourseUseCase {
     teacher_id,
     trainingFor,
   }: ICreateCourseDTO): Promise<void> {
-    this.coursesRepositories.create({
-      name,
-      photo_url,
-      description,
-      content_id,
-      knowledge,
-      price,
-      students_total,
-      teacher_id,
-      trainingFor,
-    });
+    try {
+      this.coursesRepositories.create({
+        name,
+        photo_url,
+        description,
+        content_id,
+        knowledge,
+        price,
+        students_total,
+        teacher_id,
+        trainingFor,
+      });
+    } catch {
+      throw new AppError("Required all fields");
+    }
   }
 }
 export { CreateCourseUseCase };
