@@ -1,6 +1,5 @@
 import { Router } from "express";
 
-import { authenticate } from "../middlewares/authenticateMiddleware";
 import { validateMiddleware } from "../middlewares/validateMiddleware";
 import { CreateAdminController } from "../modules/admin/useCases/createAdmin/CreateAdminController";
 import { GetAdminController } from "../modules/admin/useCases/getAdmin/GetAdminController";
@@ -26,6 +25,6 @@ adminRoutes.post(
   validateMiddleware(loginSchema),
   loginAdminController.handle
 );
-adminRoutes.patch("/", authenticate, updateAdminController.handle);
+adminRoutes.patch("/", updateAdminController.handle);
 
 export { adminRoutes };
