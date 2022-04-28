@@ -59,7 +59,7 @@ export class StudentsRepositories implements IStudentsRepositories {
   }
 
   async delete(student: Students): Promise<void> {
-    await this.repository.delete(student);
+    await this.repository.remove(student);
   }
 
   async update(user_id: string, data: any): Promise<void> {
