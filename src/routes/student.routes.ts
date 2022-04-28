@@ -31,7 +31,7 @@ studentsRouter.post("/login", new LoginStudentController().login);
 
 studentsRouter.get("/profile", authenticate(), getStudentProfileController.handle);
 studentsRouter.patch("/profile", authenticate(), new UpdateStudentsController().handle);
-studentsRouter.delete("/profile", authenticate, new DeleteStudentProfileController().handle);
+studentsRouter.delete("/profile", authenticate(), new DeleteStudentProfileController().handle);
 
 studentsRouter.post("/upload", uploadPhoto.single("file"), new UpdatePhotoStudentsController().handle);
 
