@@ -6,7 +6,7 @@ import { IAdminRepository } from "../../repositories/IAdminRepository";
 @injectable()
 class DeleteAdminUseCase {
   constructor(
-    @inject("AdminRepositories")
+    @inject("AdminRepository")
     private adminRepository: IAdminRepository
   ) { }
 
