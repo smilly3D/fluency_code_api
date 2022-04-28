@@ -36,13 +36,13 @@ studentsRouter.post(
   new UpdatePhotoStudentsController().handle
 );
 
-studentsRouter.delete("/:id", deleteStudentController.handle);
-
 studentsRouter.delete(
   "/profile",
   authenticate,
   new DeleteStudentProfileController().handle
 );
+
+studentsRouter.delete("/:id", deleteStudentController.handle);
 
 studentsRouter.patch(
   "/profile",
