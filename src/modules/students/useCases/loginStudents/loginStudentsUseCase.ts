@@ -13,25 +13,22 @@ class LoginStudentUseCase {
     @inject("StudentsRepositories")
     private studentsRepositories: IStudentsRepositories
   ) {}
-  async execute({
-    email,
-    password,
-  }: ILoginStudentsDTO): Promise<string | Error> {
+  async execute({ email, password }: ILoginStudentsDTO): Promise<string | Error> {
     const student = await this.studentsRepositories.findByEmail(email);
 
     if (!student) {
-      throw new AppError("User already exists", 404);
+      throw new AppError("Wrong email/password", 401);
     }
 
     const hasedPassword = await bcrypt.compare(password, student.password);
 
     if (!hasedPassword) {
-      throw new AppError("Invalid Password");
+      throw new AppError("Wrong email/password", 401);
     }
-    const { id } = student;
-    const accessToken = jwt.sign({ id }, JWT_CONFIG.SECRET_KEY, {
+
+    const accessToken = jwt.sign({ type: "student" }, JWT_CONFIG.SECRET_KEY, {
       expiresIn: JWT_CONFIG.EXPIRES_IN,
-      subject: id,
+      subject: student.id,
     });
 
     return accessToken;

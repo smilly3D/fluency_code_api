@@ -16,12 +16,12 @@ export class CreateStudentsUseCase {
     email,
     password,
   }: ICreateStudentsDTO): Promise<string | Error> {
-    const passwords = await bcrypt.hash(password, 10);
+    const passwordHash = await bcrypt.hash(password, 10);
 
     const student = await this.studentsRepositories.create({
       name,
       email,
-      password: passwords,
+      password: passwordHash,
     });
 
     return student;

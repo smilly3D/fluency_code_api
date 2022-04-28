@@ -21,9 +21,6 @@ export class UpdatePhotoStudentsUseCase {
   async execute({ avatar_file, id }: IRequest): Promise<void> {
     this.s3Provider.save(avatar_file);
 
-    await this.studentsRepositories.updatePhoto(
-      id,
-      `${process.env.BASE_URL_BUCKET}/avatar/${avatar_file}`
-    );
+    await this.studentsRepositories.updatePhoto(id, `${process.env.BASE_URL_BUCKET}/avatar/${avatar_file}`);
   }
 }

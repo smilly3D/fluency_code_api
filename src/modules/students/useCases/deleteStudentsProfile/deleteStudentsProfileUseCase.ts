@@ -1,4 +1,3 @@
-import jwt from "jsonwebtoken";
 import { inject, injectable } from "tsyringe";
 
 import { AppError } from "../../../../errors/AppError";
@@ -10,19 +9,13 @@ export class DeleteStudentProfileUseCase {
     @inject("StudentsRepositories")
     private studentsRepositories: IStudentsRepositories
   ) {}
-  async execute(token: string): Promise<string | Error> {
-    const decodedUser: any = jwt.verify(
-      token,
-      process.env.SECRET_KEY,
-      (_err, decoded) => {
-        return decoded;
-      }
-    );
-    const student = await this.studentsRepositories.findById(decodedUser.id);
+  async execute(id: string): Promise<string | Error> {
+    const student = await this.studentsRepositories.findById(id);
 
     if (!student) {
       throw new AppError("Student not exists", 404);
     }
+
     await this.studentsRepositories.delete(student);
     return "Student deleted with success";
   }

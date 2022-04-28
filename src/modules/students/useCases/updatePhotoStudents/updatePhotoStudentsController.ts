@@ -11,15 +11,9 @@ export class UpdatePhotoStudentsController {
     const avatar_file = request.file.filename;
     const token = request.headers.authorization.split(" ")[1];
 
-    const updateUserAvatarUseCase = container.resolve(
-      UpdatePhotoStudentsUseCase
-    );
+    const updateUserAvatarUseCase = container.resolve(UpdatePhotoStudentsUseCase);
 
-    const userDecoded: any = jwt.verify(
-      token,
-      process.env.SECRET_KEY,
-      (err, decoded) => decoded
-    );
+    const userDecoded: any = jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => decoded);
 
     await updateUserAvatarUseCase.execute({ avatar_file, id: userDecoded.id });
 

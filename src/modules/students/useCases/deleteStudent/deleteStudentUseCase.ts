@@ -8,13 +8,13 @@ class DeleteStudentUseCase {
   constructor(
     @inject("StudentsRepositories")
     private studentsRepositories: IStudentsRepositories
-  ) { }
+  ) {}
 
   async execute(id: string): Promise<string | Error> {
     const student = await this.studentsRepositories.findById(id);
 
     if (!student) {
-      throw new AppError("User already exists", 404);
+      throw new AppError("User not exists", 404);
     }
 
     await this.studentsRepositories.delete(student);

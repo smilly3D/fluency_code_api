@@ -12,15 +12,7 @@ class AdminRepository implements IAdminRepository {
     this.repository = getRepository(Admin);
   }
 
-  async create({
-    biography,
-    cpf,
-    email,
-    name,
-    password,
-    phone,
-    photo_url,
-  }: ICreateAdminrDTO): Promise<void> {
+  async create({ biography, cpf, email, name, password, phone, photo_url }: ICreateAdminrDTO): Promise<void> {
     const admin = this.repository.create({
       biography,
       cpf,
@@ -61,13 +53,10 @@ class AdminRepository implements IAdminRepository {
     admin.biography = data.biography ?? admin.biography;
     admin.description = data.description ?? admin.description;
     admin.name = data.name ?? admin.name;
-    admin.password = data.password
-      ? await bcrypt.hash(data.password, 10)
-      : admin.password;
+    admin.password = data.password ? await bcrypt.hash(data.password, 10) : admin.password;
 
     await repo.save(admin);
   }
-
   async delete(admin: Admin): Promise<void> {
     await this.repository.remove(admin);
   }

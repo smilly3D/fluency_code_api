@@ -1,8 +1,13 @@
-import jwt from "jsonwebtoken";
 import "dotenv";
 import { inject, injectable } from "tsyringe";
 
 import { IStudentsRepositories } from "../../repositories/IStudentsRepositories";
+import { IUpdateStudentsDTO } from "./IUpdateStudentsDTO";
+
+interface IRequest {
+  id: string;
+  data: IUpdateStudentsDTO;
+}
 
 @injectable()
 export class updateStudentsUseCase {
@@ -11,13 +16,7 @@ export class updateStudentsUseCase {
     private studentsRepositories: IStudentsRepositories
   ) {}
 
-  async execute({ token, data }) {
-    const userInformations: any = jwt.verify(
-      token,
-      process.env.SECRET_KEY,
-      (_err, decoded) => decoded
-    );
-
-    this.studentsRepositories.update(userInformations.sub, data);
+  async execute({ id, data }: IRequest) {
+    this.studentsRepositories.update(id, data);
   }
 }

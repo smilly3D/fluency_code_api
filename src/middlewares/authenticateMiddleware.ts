@@ -1,22 +1,37 @@
 import { Request, Response, NextFunction } from "express";
-import jwt from "jsonwebtoken";
+import { verify } from "jsonwebtoken";
+
 import "dotenv";
 
-export const authenticate = (
-  request: Request,
-  response: Response,
-  next: NextFunction
-) => {
-  if (!request.headers.authorization) {
-    return response.status(401).json({ message: "invalid token." });
-  }
-  const token = request.headers.authorization.split(" ")[1];
+import { AppError } from "../errors/AppError";
 
-  jwt.verify(token, process.env.SECRET_KEY, (err) => {
-    if (err) {
-      return response.status(401).json({ message: "invalid token." });
+interface IPayload {
+  sub: string;
+  type: string;
+}
+
+export const authenticate =
+  (types: string[] = ["admin", "student", "teacher"]) =>
+  (request: Request, response: Response, next: NextFunction) => {
+    const authHeader = request.headers.authorization;
+
+    if (!authHeader) {
+      throw new AppError("Token missing", 401);
     }
-  });
 
-  return next();
-};
+    const token = authHeader.split(" ")[1];
+
+    try {
+      const { sub: id, type } = verify(token, process.env.SECRET_KEY) as IPayload;
+
+      if (!types.includes(type)) {
+        return response.status(401).json({ message: "Unauthorized" });
+      }
+
+      request.id = id;
+
+      return next();
+    } catch {
+      throw new AppError("Invalid token!", 401);
+    }
+  };
