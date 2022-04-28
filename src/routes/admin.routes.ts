@@ -3,6 +3,7 @@ import { Router } from "express";
 import { authenticate } from "../middlewares/authenticateMiddleware";
 import { validateMiddleware } from "../middlewares/validateMiddleware";
 import { CreateAdminController } from "../modules/admin/useCases/createAdmin/CreateAdminController";
+import { DeleteAdminController } from "../modules/admin/useCases/deleteAdmin/deleteAdminController";
 import { GetAdminController } from "../modules/admin/useCases/getAdmin/GetAdminController";
 import { LoginAdminController } from "../modules/admin/useCases/loginAdmin/LoginAdminController";
 import { UpdateadminController } from "../modules/admin/useCases/updateStudents/updateStudentsController";
@@ -14,6 +15,8 @@ const createAdminControler = new CreateAdminController();
 const getAdminController = new GetAdminController();
 const loginAdminController = new LoginAdminController();
 const updateAdminController = new UpdateadminController();
+const deleteAdminController = new DeleteAdminController();
+
 
 adminRoutes.get("/", getAdminController.handle);
 adminRoutes.post(
@@ -26,6 +29,9 @@ adminRoutes.post(
   validateMiddleware(loginSchema),
   loginAdminController.handle
 );
+
 adminRoutes.patch("/", authenticate, updateAdminController.handle);
+adminRoutes.delete("/:id", deleteAdminController.handle);
+
 
 export { adminRoutes };

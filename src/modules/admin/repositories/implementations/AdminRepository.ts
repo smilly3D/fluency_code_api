@@ -51,6 +51,7 @@ class AdminRepository implements IAdminRepository {
     return this.repository.find();
   }
 
+
   async update(id: string, data: any): Promise<void> {
     const repo = getRepository(Admin);
 
@@ -66,6 +67,9 @@ class AdminRepository implements IAdminRepository {
       : admin.password;
 
     await repo.save(admin);
+
+  async delete(admin: Admin): Promise<void> {
+    await this.repository.remove(admin);
   }
 }
 
