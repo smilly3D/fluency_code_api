@@ -57,6 +57,10 @@ class TeacherRepository implements ITeacherRepository {
   async delete(teacher: Teacher): Promise<void> {
     await this.repository.remove(teacher);
   }
+
+  async update(teacher_id: string, data: unknown): Promise<void> {
+    await this.repository.update(teacher_id, data);
+  }
 }
 
 export { TeacherRepository };
