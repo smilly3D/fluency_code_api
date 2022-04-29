@@ -10,14 +10,14 @@ https://castone-q4-node.herokuapp.com
 
 # Desenvolvedores
 
-| Imagem                                                                 | Nome             | Status        |
-| ---------------------------------------------------------------------- | ---------------- | ------------- |
-| ![Felipe](https://avatars.githubusercontent.com/u/48024940?s=200&v=4)  | Felipe Larson    | Product Owner |
-| ![Smilly](https://avatars.githubusercontent.com/u/86039525?s=200&v=4)  | Smilly Aguilar   | Tech Leader   |
-| ![Julia](https://avatars.githubusercontent.com/u/86054348?s=200&v=4)   | Julia Gama       | Scrum Master  |
-| ![Wallace](https://avatars.githubusercontent.com/u/73260587?s=200&v=4) | Wallace Oliveira | Dev           |
-| ![Matheus](https://avatars.githubusercontent.com/u/65559844?s=200&v=4) | Matheus Burey    | Dev           |
-| ![Arthur](https://avatars.githubusercontent.com/u/85639170?s=200&v=4)  | Arthur Sarmento  | Dev           |
+| Imagem                                                                 | Nome             | Status        | Linkedin                                                                                                                                                                                                                               |
+| ---------------------------------------------------------------------- | ---------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Felipe](https://avatars.githubusercontent.com/u/48024940?s=200&v=4)  | Felipe Larson    | Product Owner | [![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/felipe-larson-da-silveira/)](https://www.linkedin.com/in/felipe-larson-da-silveira/)   |
+| ![Smilly](https://avatars.githubusercontent.com/u/86039525?s=200&v=4)  | Smilly Aguilar   | Tech Leader   | [![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/smillyaguilar/)](https://www.linkedin.com/in/smillyaguilar/)                           |
+| ![Julia](https://avatars.githubusercontent.com/u/86054348?s=200&v=4)   | Julia Gama       | Scrum Master  | [![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/juliagamadeoliveira/)](https://www.linkedin.com/in/juliagamadeoliveira/)               |
+| ![Wallace](https://avatars.githubusercontent.com/u/73260587?s=200&v=4) | Wallace Oliveira | Dev           | [![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/wallace-oliveira-702497209/)](https://www.linkedin.com/in/wallace-oliveira-702497209/) |
+| ![Matheus](https://avatars.githubusercontent.com/u/65559844?s=200&v=4) | Matheus Burei    | Dev           | [![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/matheus-h-burei/)](https://www.linkedin.com/in/matheus-h-burei/)                       |
+| ![Arthur](https://avatars.githubusercontent.com/u/85639170?s=200&v=4)  | Arthur Sarmento  | Dev           | [![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/arthur-sarmento/)](https://www.linkedin.com/in/arthur-sarmento/)                       |
 
 ---
 
