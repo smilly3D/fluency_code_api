@@ -7,13 +7,12 @@ class AproveTeacherController {
   async handle(request: Request, response: Response): Promise<Response> {
     const aproveTeacherUseCase = container.resolve(AproveTeacherUseCase);
 
-    const data = request.body;
     const { teacher_id } = request.params;
 
-    const teacher = await aproveTeacherUseCase.execute(teacher_id, data);
+    const teacher = await aproveTeacherUseCase.execute(teacher_id);
 
     if (!teacher.email) {
-      return response.status(404).json({ error: "invalid id" });
+      return response.status(404).json({ error: "Teacher not found" });
     }
 
     delete teacher.password;

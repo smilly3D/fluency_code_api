@@ -29,7 +29,7 @@ teachersRoutes.post("/login", validateMiddleware(loginSchema), loginTeacherContr
 
 teachersRoutes.delete("/:id", deleteTeacherController.handle);
 
+teachersRoutes.patch("/aprove/:teacher_id", authenticate(["admin"]), aproveTeacherController.handle);
 teachersRoutes.patch("/:teacher_id", authenticate(["admin", "teacher"]), updateTeacherController.handle);
-teachersRoutes.patch("/aprove/:teacher_id", aproveTeacherController.handle);
 
 export { teachersRoutes };
