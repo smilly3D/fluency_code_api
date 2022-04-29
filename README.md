@@ -10,24 +10,24 @@ https://castone-q4-node.herokuapp.com
 
 <h2>Desenvolvedores</h2>
 
-<div style="display: flex; flex-wrap: wrap">
+<div style="display: flex;">
   <div style="display: flex">
-    <div style="margin: 30px">
+    <div style="margin: 30px;box-shadow: 0 0 4px #262626; background: #fff;  color: #000;">
       <img src="https://avatars.githubusercontent.com/u/48024940?s=400&u=917f38c9afb6526bbda4135d749a22d1c5dfd580&v=4" style="width: 100px;"/>
       <div>
         <p>Felipe Larson</p>
         <p>Product Owner</p>
       </div>
     </div>
-    <div style="margin: 30px">
-      <img src="https://avatars.githubusercontent.com/u/86039525?v=4" style="width: 100px; margin-left:10px;"/>
+    <div style="margin: 30px;box-shadow: 0 0 4px #262626; background: #fff;  color: #000;">
+      <img src="https://avatars.githubusercontent.com/u/86039525?v=4" style="width: 100px; "/>
       <div>
         <p>Smilly Aguilar</p>
         <p>Tech Leader</p>
       </div>
     </div>
-    <div style="margin: 30px">
-      <img src="https://avatars.githubusercontent.com/u/86054348?v=4" style="width: 100px;margin-left:10px;"/>
+    <div style="margin: 30px;box-shadow: 0 0 4px #262626; background: #fff;  color: #000;">
+      <img src="https://avatars.githubusercontent.com/u/86054348?v=4" style="width: 100px;"/>
       <div>
         <p>Julia Gama</p>
         <p>Scrum Master</p>
@@ -35,22 +35,22 @@ https://castone-q4-node.herokuapp.com
     </div>
   </div>
   <div style="display: flex">
-    <div style="margin: 30px">
-      <img src="https://avatars.githubusercontent.com/u/73260587?v=4" style="width: 100px; margin-left:10px;"/>
+    <div style="margin: 30px;box-shadow: 0 0 4px #262626; background: #fff;  color: #000;">
+      <img src="https://avatars.githubusercontent.com/u/73260587?v=4" style="width: 100px; "/>
       <div>
         <p>Wallace Oliveira</p>
         <p>Dev</p>
       </div>
     </div>
-    <div style="margin: 30px">
-      <img src="https://avatars.githubusercontent.com/u/65559844?v=4" style="width: 100px; margin-left:10px;"/>
+    <div style="margin: 30px;box-shadow: 0 0 4px #262626; background: #fff;  color: #000;">
+      <img src="https://avatars.githubusercontent.com/u/65559844?v=4" style="width: 100px; "/>
       <div>
         <p>Matheus Burey</p>
         <p>Dev</p>
       </div>
     </div>
-    <div style="margin: 30px">
-      <img src="https://avatars.githubusercontent.com/u/85639170?v=4" style="width: 100px; margin-left:10px;"/>
+    <div style="margin: 30px;box-shadow: 0 0 4px #262626; background: #fff;  color: #000;">
+      <img src="https://avatars.githubusercontent.com/u/85639170?v=4" style="width: 100px; "/>
       <div>
         <p>Arthur Sarmento</p>
         <p>Dev</p>
