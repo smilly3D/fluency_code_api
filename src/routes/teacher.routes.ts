@@ -21,15 +21,15 @@ const getTeacherByIdController = new GetTeacherByIdController();
 const updateTeacherController = new UpdateTeacherController();
 const aproveTeacherController = new AproveTeacherController();
 
-teachersRoutes.get("/", authenticate(["admin", "teacher"]), getTeacherController.handle);
-teachersRoutes.get("/:id", getTeacherByIdController.handle);
+teachersRoutes.get("/", authenticate(["admin", "teacher", "student"]), getTeacherController.handle);
+teachersRoutes.get("/:id", authenticate(["admin", "teacher", "student"]), getTeacherByIdController.handle);
 
 teachersRoutes.post("/", validateMiddleware(registerTeacherSchema), createTeacherControler.handle);
 teachersRoutes.post("/login", validateMiddleware(loginSchema), loginTeacherController.handle);
 
-teachersRoutes.delete("/:id", deleteTeacherController.handle);
+teachersRoutes.delete("/:id", authenticate(["admin", "teacher"]), deleteTeacherController.handle);
 
-teachersRoutes.patch("/:teacher_id", updateTeacherController.handle);
-teachersRoutes.patch("/aprove/:teacher_id", aproveTeacherController.handle);
+teachersRoutes.patch("/aprove/:teacher_id", authenticate(["admin"]), aproveTeacherController.handle);
+teachersRoutes.patch("/:teacher_id", authenticate(["admin", "teacher"]), updateTeacherController.handle);
 
 export { teachersRoutes };

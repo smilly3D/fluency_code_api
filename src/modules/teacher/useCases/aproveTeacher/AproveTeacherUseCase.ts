@@ -1,5 +1,6 @@
 import { inject, injectable } from "tsyringe";
 
+import { AppError } from "../../../../errors/AppError";
 import { Teacher } from "../../entities/Teacher";
 import { ITeacherRepository } from "../../repositories/ITeachRepository";
 
@@ -8,19 +9,17 @@ class AproveTeacherUseCase {
   constructor(
     @inject("TeacherRepository")
     private teacherRepository: ITeacherRepository
-  ) {}
+  ) { }
 
-  async execute(id, data): Promise<Teacher> {
+  async execute(id: string): Promise<Teacher> {
     try {
       const teacher = await this.teacherRepository.findById(id);
 
       if (!teacher) {
-        throw new Error("teacher not found");
+        throw new AppError("teacher not found", 404);
       }
 
-      teacher.isApproved = data.isApproved
-        ? data.isApproved
-        : teacher.isApproved;
+      teacher.isApproved = !teacher.isApproved;
 
       await this.teacherRepository.update(id, teacher);
 
