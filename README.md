@@ -21,6 +21,10 @@ https://castone-q4-node.herokuapp.com
 
 ---
 
+[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=Teste-api&uri=https%3A%2F%2Fraw.githubusercontent.com%2Fsmilly3D%2Ffluency_code_api%2Fmain%2Fsrc%2Finsomnia%2Ffluency-code.json%3Ftoken%3DGHSAT0AAAAAABT6XSOZUWDVKMH3PMQEGXZAYTL3CBQ)
+
+---
+
 LEGENDA
 
 | Status       | Icon Status |
