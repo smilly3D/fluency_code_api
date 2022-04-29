@@ -19,7 +19,7 @@ class GetTeacherByIdController {
 
       return res.json(teacher);
     } catch (e) {
-      return res.status(400).json({ message: "invalid id" });
+      return res.status(404).json({ message: "teacher not found" });
     }
   }
 }

@@ -8,9 +8,9 @@ class GetTeacherByIdUseCase {
   constructor(
     @inject("TeacherRepository")
     private teacherRepository: ITeacherRepository
-  ) {}
+  ) { }
 
-  execute(id): Promise<Teacher> {
+  execute(id: string): Promise<Teacher> {
     const teacher = this.teacherRepository.findById(id);
     return teacher;
   }
