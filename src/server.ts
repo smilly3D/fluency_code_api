@@ -1,17 +1,10 @@
-import express from "express";
-import swaggerUI from "swagger-ui-express";
+import "reflect-metadata";
 
-import { router } from "./routes";
-import swaggerFile from "./swagger.json";
+import "express-async-errors";
 
-import "./database";
+import "./shared/container";
 
-const app = express();
+import { app } from "./app";
+import { PORT } from "./configs";
 
-app.use(express.json());
-
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerFile));
-
-app.use(router);
-
-app.listen(3333, () => console.log("Server is running"));
+app.listen(PORT || 3333, () => console.log("Server is running"));

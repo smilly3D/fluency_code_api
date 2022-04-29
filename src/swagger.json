@@ -9,11 +9,11 @@
     }
   },
   "paths": {
-    "/categories":{
+    "/students/register":{
       "post":{
-        "tags":["Category"],
-        "summary": "Create a category",
-        "description": "Create a new category",
+        "tags":["Students"],
+        "summary": "Create a Students",
+        "description": "Create a new Students",
         "requestBody": {
           "content":{
             "application/json":{
@@ -23,13 +23,18 @@
                   "name":{
                     "type": "string"
                   },
-                  "description":{
+                  "email":{
+                    "type": "string"
+                  }
+                  ,
+                  "password":{
                     "type": "string"
                   }
                 },
                 "example":{
-                  "name": "category name sample",
-                  "description": "Category description sample"
+                  "name": "Students name sample",
+                  "email": "Students description sample",
+                  "password": "Students password sample"
                 }
               }
             }
@@ -39,11 +44,12 @@
           "201":{
             "description": "Created"
           },
-          "500":{
-            "description": "Category already exists"
+          "400":{
+            "description": "email is a required field"
           }
         }
       },
+      
       "get":{
         "tags":["Category"],
         "summary": "List all categories",
@@ -69,6 +75,43 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/students/login":{
+      "post":{
+        "tags":["Students"],
+        "summary": "Login a Students",
+        "description": "Login a Students",
+        "requestBody": {
+          "content":{
+            "application/json":{
+              "schema":{
+                "type": "object",
+                "properties":{
+                  "email":{
+                    "type": "string"
+                  }
+                  ,
+                  "password":{
+                    "type": "string"
+                  }
+                },
+                "example":{
+                  "email": "Students description sample",
+                  "password": "Students password sample"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201":{
+            "description": "Hash token"
+          },
+          "401":{
+            "description": "Wrong email/password"
           }
         }
       }
