@@ -35,6 +35,6 @@ studentsRouter.delete("/profile", authenticate(), new DeleteStudentProfileContro
 
 studentsRouter.post("/upload", uploadPhoto.single("file"), new UpdatePhotoStudentsController().handle);
 
-studentsRouter.get("/:id", authenticate(["admins"]), getStudentByIdController.handle);
+studentsRouter.get("/:id", authenticate(["admin"]), getStudentByIdController.handle);
 studentsRouter.delete("/:id", authenticate(["admin"]), deleteStudentController.handle);
 export { studentsRouter };
