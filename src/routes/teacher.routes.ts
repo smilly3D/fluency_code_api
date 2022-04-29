@@ -27,7 +27,7 @@ teachersRoutes.get("/:id", authenticate(["admin", "teacher", "student"]), getTea
 teachersRoutes.post("/", validateMiddleware(registerTeacherSchema), createTeacherControler.handle);
 teachersRoutes.post("/login", validateMiddleware(loginSchema), loginTeacherController.handle);
 
-teachersRoutes.delete("/:id", deleteTeacherController.handle);
+teachersRoutes.delete("/:id", authenticate(["admin", "teacher"]), deleteTeacherController.handle);
 
 teachersRoutes.patch("/aprove/:teacher_id", authenticate(["admin"]), aproveTeacherController.handle);
 teachersRoutes.patch("/:teacher_id", authenticate(["admin", "teacher"]), updateTeacherController.handle);
