@@ -13,7 +13,7 @@ class UpdateTeacherController {
     const teacher = await updateTeacherUseCase.execute(teacher_id, data);
 
     if (!teacher.email) {
-      return response.status(400).json({ error: "invalid id" });
+      return response.status(404).json({ message: "Teacher not found" });
     }
 
     delete teacher.password;

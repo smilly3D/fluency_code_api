@@ -16,7 +16,7 @@ class UpdateTeacherUseCase {
       const teacher = await this.teacherRepository.findById(id);
 
       if (!teacher) {
-        throw new AppError("teacher not found");
+        throw new AppError("teacher not found", 404);
       }
 
       teacher.password = data.password ? await hash(data.password, 10) : teacher.password;
@@ -35,7 +35,7 @@ class UpdateTeacherUseCase {
 
       return teacherUpdated;
     } catch (e) {
-      return e;
+      throw new AppError("teacher not found", 404);
     }
   }
 }
